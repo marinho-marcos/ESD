@@ -32,7 +32,7 @@ void criarPilha(){
 void push(){
     if(topo == NULL){
         cout << "\nPilha vazia!" << endl;
-        criarLista();
+        criarPilha();
         return;
     }
 
@@ -61,7 +61,7 @@ void pop(){
     topo = topo->proximo;
     free(temp);
 
-    if(base == NULL){
+    if(topo == NULL){
         base = NULL;
     }
 }
@@ -81,7 +81,7 @@ void exibirBase(){
         return;
     }
     
-    cout << "\base da pilha: " << base->valor << endl;
+    cout << "base da pilha: " << base->valor << endl;
 }
 
 void exibirPilha(){
@@ -98,36 +98,61 @@ void exibirPilha(){
     }
 }
 
+/*
 void esvaziarPilha(){
     if(topo == NULL){
         cout << "\nErro. pilha vazia!" << endl;
         return;
     }
     
-    while(!isEmpty()){
+    while(topo != NULL){
         pop();
     }
     cout << "\nPilha esvaziada!" << endl;
 }
+*/
 
 int main() {
-    push();
-    push();
-    push();
-    
-    exibirTopo();
-    exibirBase();
-    
-    cout << "\n";
-    exibirPilha();
-    
-    cout << "\n";
-    pop();
-    
-    cout << "\n";
-    exibirPilha();
+    int opcao = -1; // Inicia com um valor inválido para garantir a primeira execução do menu
 
-    //CRIAR MENU
+    while (opcao != 0) {
+        cout << "\n------ MENU ------\n";
+        cout << "(1) Criar pilha\n";
+        cout << "(2) Push\n";
+        cout << "(3) Pop\n";
+        cout << "(4) Exibir topo\n";
+        cout << "(5) Exibir base\n";
+        cout << "(6) Exibir pilha completa\n";
+        cout << "(0) Sair\n";
+        cout << "\nInforme a opção desejada: ";
+        cin >> opcao;
+
+        switch (opcao) {
+            case 1: 
+                criarPilha();
+                break;
+            case 2: 
+                push();
+                break;
+            case 3: 
+                pop();
+                break;
+            case 4: 
+                exibirTopo();
+                break;
+            case 5: 
+                exibirBase();
+                break;
+            case 6: 
+                exibirPilha();
+                break;
+            case 0: 
+                cout << "Saindo...\n";
+                break;
+            default:
+                cout << "Opção inválida!\n";
+        }
+    }
 
     return 0;
 }
