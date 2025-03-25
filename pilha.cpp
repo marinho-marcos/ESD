@@ -13,7 +13,7 @@ NO *base = NULL;
 
 void criarPilha(){
     if(topo != NULL){
-        cout << "\nPilha já crida" << endl;
+        cout << "\nPilha já criada" << endl;
         return;
     }
 
@@ -31,7 +31,7 @@ void criarPilha(){
 
 void push(){
     if(topo == NULL){
-        cout << "\nPilha vazia!" << endl;
+        cout << "\nPilha ainda não foi criada!\n";
         criarPilha();
         return;
     }
@@ -63,6 +63,7 @@ void pop(){
 
     if(topo == NULL){
         base = NULL;
+        cout << "A pilha agora está vazia.\n";
     }
 }
 
@@ -72,21 +73,20 @@ void exibirTopo(){
         return;
     }
     
-    cout << "\nTopo da pilha: " << topo->valor << endl;
+    cout << "Topo da pilha: " << topo->valor << endl;
 }
 
 void exibirBase(){
     if(base == NULL){
-        cout << "\nErro. pilha vazia." << endl;
-        return;
+        cout << "\nErro. Pilha vazia." << endl;
+    } else {
+        cout << "Base da pilha: " << base->valor << endl;
     }
-    
-    cout << "base da pilha: " << base->valor << endl;
 }
 
 void exibirPilha(){
     if(topo == NULL){
-        cout << "\nErro. pilha vazia!" << endl;
+        cout << "\nA pilha está vazia! Nenhum elemento para exibir.\n";
         return;
     }
     
@@ -113,7 +113,7 @@ void esvaziarPilha(){
 */
 
 int main() {
-    int opcao = -1; // Inicia com um valor inválido para garantir a primeira execução do menu
+    int opcao = -1;
 
     while (opcao != 0) {
         cout << "\n------ MENU ------\n";
